@@ -69,10 +69,24 @@ const UrlValidator = () => {
                                 Domain:
                                 <input data-testid="domain" type="text" />
                             </label>
+                            <br/>
                             <label>
-                                                                Domain:
-                                                                                                <input data-testid="domain" type="text" />
-                                                                                                                            
+                                Path:
+                                <input data-testid="path" type="text" />
+                             </label>
+                             <br/>
+                             <label>
+                                Method:
+                                <select data-testid="method" defaultValue="GET" id="method" onChange={(e)=>{
+                                        console.log(e);
+                                        (document.getElementById("method").value==="DELETE") ? setDisabled(true) : setDisabled(false);
+                                }}>
+                                        <option value="GET">GET</option>
+                                        <option value="POST">POST</option>
+                                        <option value="PUT">PUT</option>
+                                </select>
+                             </label>
+                                
 
 }
 export default UrlValidator;
