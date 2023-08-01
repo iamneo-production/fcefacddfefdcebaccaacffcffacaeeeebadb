@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from 'react';
 const UrlValidator = () => { 
     let [disabled,setDisabled] = useState(false);
-        const isValidateDomain = (d) => {
-                if(d.startsWith("www.") && d.endsWith(".com")) {
-                        return true;
-                        }
-                        return false;
-                        }                                                
-                        const convertToPath = (input) => {
-                                                             return '/' + input.split(" ").join("/");
-                                                                 }
+    const isValidateDomain = (d) => {
+        if(d.startsWith("www.") && d.endsWith(".com")) {
+             return true;
+        }
+        return false;
+    }                                                
+    const convertToPath = (input) => {
+        return '/' + input.split(" ").join("/");
+    }
                                                                   
-                                                                      const convertJson = (jsonString) => {
-                                                                              const jsonObject = JSON.parse(jsonString);
-                                                                                      const params = "?" + Object.entries(jsonObject).map((e) => e.join("=")).join("&");
-                                                                                              return params;
-                                                                                                  }
-                                                                                                   
-                                                                                                       const isValidJson = (jsonString) => {
-                                                                                                               try {
-                                                                                                                           JSON.parse(jsonString);
-                                                                                                                                       return true;
-                                                                                                                                               } catch (e) {
-                                                                                                                                                           return false;
-                                                                                                                                                                   }
-                                                                                                                                                                       }
+    const convertJson = (jsonString) => {
+        const jsonObject = JSON.parse(jsonString);
+        const params = "?" + Object.entries(jsonObject).map((e) => e.join("=")).join("&");
+        return params;
+    }
+                                                                           
+    const isValidJson = (jsonString) => {
+        try {
+            JSON.parse(jsonString);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
                                                                                                                                                                         
-                                                                                                                                                                            const validateForm = (domain,path,method,body) => {
-                                                                                                                                                                                    if (!isValidateDomain(domain)) {
+    const validateForm = (domain,path,method,body) => {
+        if (!isValidateDomain(domain)) {
                                                                                                                                                                                                 console.log("went");
                                                                                                                                                                                                             return "Invalid URL! Please recheck your URL";
                                                                                                                                                                                                                     }
