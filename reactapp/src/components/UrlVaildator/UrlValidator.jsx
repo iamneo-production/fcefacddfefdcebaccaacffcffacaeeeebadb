@@ -1,45 +1,42 @@
 import React, { useEffect, useState } from 'react';
 const UrlValidator = () => { 
-    let [disabled,setDisabled] = useState(false);
-    const isValidateDomain = (d) => {
-        if(d.startsWith("www.") && d.endsWith(".com")) {
-             return true;
-        }
-        return false;
-    }                                                
-    const convertToPath = (input) => {
+        let [disabled,setDisabled] = useState(false);
+        const isValidateDomain = (d) => {
+                if(d.startsWith("www.") && d.endsWith(".com")) {
+                return true;
+                }
+                return false;
+        }                                                
+        const convertToPath = (input) => {
         return '/' + input.split(" ").join("/");
-    }
-                                                                  
-    const convertJson = (jsonString) => {
-        const jsonObject = JSON.parse(jsonString);
-        const params = "?" + Object.entries(jsonObject).map((e) => e.join("=")).join("&");
-        return params;
-    }
-                                                                           
-    const isValidJson = (jsonString) => {
+        }                                                           
+        const convertJson = (jsonString) => {
+                const jsonObject = JSON.parse(jsonString);
+                const params = "?" + Object.entries(jsonObject).map((e) => e.join("=")).join("&");
+                return params;
+        }                                                                   
+        const isValidJson = (jsonString) => {
         try {
-            JSON.parse(jsonString);
-            return true;
+                JSON.parse(jsonString);
+                return true;
         } catch (e) {
-            return false;
+                return false;
         }
-    }
-                                                                                                                                                                        
-    const validateForm = (domain,path,method,body) => {
-        if (!isValidateDomain(domain)) {
-                console.log("went");
-                return "Invalid URL! Please recheck your URL";
-        }
-        if (method === "GET") {
-                if (Object.keys(body).length === 0 ) return "";   
-                if (!isValidJson(body)) return "Error in the Body of the Query Params";
-        }
-        if (method === "POST" || method === "PUT") {
-           if(Object.keys(body).length === 0) 
-                return "Error in the Body";
-           if(!isValidJson(body)) {
-                return "Error in the Body";
+        }                                                                                                                                                                        
+        const validateForm = (domain,path,method,body) => {
+                if (!isValidateDomain(domain)) {
+                        console.log("went");
+                        return "Invalid URL! Please recheck your URL";
+                }
+                if (method === "GET") {
+                        if (Object.keys(body).length === 0 ) return "";   
+                        if (!isValidJson(body)) return "Error in the Body of the Query Params";
+                }
+                if (method === "POST" || method === "PUT") {
+                if(Object.keys(body).length === 0) 
+                        return "Error in the Body";
+                if(!isValidJson(body)) {
+                        return "Error in the Body";
                                                                                                                                                                                                                                                                                                                                         }
                                                                                                                                                                                                                                                                                                                                                 }
                                                                                                                                                                                                                                                                                                                                                         return "";
@@ -105,6 +102,6 @@ const UrlValidator = () => {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         </form>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </div>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     );
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-                                                                                                                                                                                                                                                                                                                                                                                                                                     export default UrlValidator;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+}
+export default UrlValidator;
