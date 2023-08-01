@@ -84,9 +84,20 @@ const UrlValidator = () => {
                                         <option value="GET">GET</option>
                                         <option value="POST">POST</option>
                                         <option value="PUT">PUT</option>
+                                        <option value="DELETE">DELETE</option>
                                 </select>
                              </label>
-                                
-
+                             <br/>
+                             <label>
+                                Body:
+                                <textarea data-testid="body" 
+                                      disabled={disabled}
+                                />
+                             </label>
+                             <br/>
+                             <button type="submit">Validate</button>
+                        </form>
+                </div>
+        );             
 }
 export default UrlValidator;
